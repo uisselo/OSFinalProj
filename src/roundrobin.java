@@ -1,15 +1,4 @@
 public class roundrobin {
-    public static void main(String[] args) throws Exception {
-        
-        int processes[] = { 1, 2, 3}; 
-        int n = processes.length; 
-       
-        int burst_time[] = {10, 5, 8}; 
-       
-        int quantum = 2; 
-        avgTime(processes, n, burst_time, quantum); 
-
-    }   
 
     static void waitingTime(int processes[], int n, int bt[], int wt[], int quantum) {
         int rem_bt[] = new int[n];
@@ -27,16 +16,16 @@ public class roundrobin {
 
                     if (rem_bt[i] > quantum) {
                         t += quantum;
-                        rem_bt[i] = quantum;
+                        rem_bt[i] -= quantum;
                     } else {
                         t = t + rem_bt[i];
                         wt[i] = t - bt[i];
                         rem_bt[i] = 0;
                     }
                 }
-                if (done == true)
-                break;
             }
+            if (done == true)
+            break;
         }        
     }
 
@@ -63,4 +52,16 @@ public class roundrobin {
         System.out.println("Average waiting time: " + (float)total_wt / (float)n);
         System.out.println("Average turn around time: " + (float)total_tat / (float)n);
     }
+
+    public static void main(String[] args) throws Exception {
+         
+        int processes[] = { 1, 2, 3 }; 
+        int n = processes.length; 
+       
+        int burst_time[] = { 10, 5, 8 }; 
+       
+        int quantum = 2; 
+        avgTime(processes, n, burst_time, quantum); 
+
+    }   
 }
