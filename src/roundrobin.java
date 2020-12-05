@@ -1,4 +1,30 @@
+import java.util.Scanner;
+
 public class roundrobin {
+
+    public static void main(String[] args) throws Exception {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of processes [2-9]: ");
+        int userIn = sc.nextInt();
+
+        int p[] = new int[userIn], bt[] = new int[userIn];
+        int n = p.length;
+
+        System.out.println("Burst Time");
+        for (int i = 0; i < n; i++) {
+            System.out.print("Enter burst time for P" + (i+1) + ": ");
+            bt[i] = sc.nextInt();
+        }
+
+        System.out.print("Enter Time Quantum: ");
+        int quantum = sc.nextInt();
+        avgTime(p, n, bt, quantum);
+
+        sc.close();
+
+    }   
 
     static void waitingTime(int processes[], int n, int bt[], int wt[], int quantum) {
         int rem_bt[] = new int[n];
@@ -46,22 +72,10 @@ public class roundrobin {
         for (int i = 0; i < n; i++) {
             total_wt = total_wt + wt[i];
             total_tat = total_tat + tat[i];
-            System.out.println(" " + (i+1) + "\t\t" + bt[i] + "\t" + wt[i] + "\t\t" + tat[i]);
+            System.out.println("P" + (i+1) + "\t\t" + bt[i] + "\t" + wt[i] + "\t\t" + tat[i]);
         }
 
         System.out.println("Average waiting time: " + (float)total_wt / (float)n);
         System.out.println("Average turn around time: " + (float)total_tat / (float)n);
     }
-
-    public static void main(String[] args) throws Exception {
-         
-        int processes[] = { 1, 2, 3 }; 
-        int n = processes.length; 
-       
-        int burst_time[] = { 10, 5, 8 }; 
-       
-        int quantum = 2; 
-        avgTime(processes, n, burst_time, quantum); 
-
-    }   
 }
