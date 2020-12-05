@@ -80,12 +80,12 @@ public class roundRobin {
         waitingTime(processes, n, bt, wt, quantum, ct, at);
         turnaroundTime(processes, n, bt, wt, tat, ct, at);
 
-        System.out.println("Processes " + "Arrival Time " + "Burst Time " + "Waiting Time " + "Turn Around Time");
+        System.out.println("Processes | " + "Arrival Time | " + "Burst Time | " + "Completion Time | " + "Turn Around Time | " + "Waiting Time");
 
         for (int i = 0; i < n; i++) {
             total_wt = total_wt + wt[i];
             total_tat = total_tat + tat[i];
-            System.out.println("P" + (i+1) + "\t\t" + at[i] + "\t" + bt[i] + "\t" + wt[i] + "\t\t" + tat[i]);
+            System.out.println("P" + (i+1) + "\t\t" + at[i] + "\t\t" + bt[i] + "\t\t" + ct[i] + "\t\t" + tat[i] + "\t\t" + wt[i] );
         }
 
         System.out.println("Average waiting time: " + (float)total_wt / (float)n);
