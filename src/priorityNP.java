@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class priorityNP {
 
-    static void sortProcesses(String pid[], int n, int at[], int bt[], int prt[]) {
+    void sortProcesses(String pid[], int n, int at[], int bt[], int prt[]) {
 
         int temp;
         String stemp;
@@ -59,7 +59,7 @@ public class priorityNP {
         }
     }
 
-    static void algorithm(String pid[], int n, int at[], int bt[], int prt[]) {
+    void algorithm(String pid[], int n, int at[], int bt[], int prt[]) {
 
         int ct[] = new int[n], tat[] = new int[n], wt[] = new int[n], total_wt = 0, total_tat = 0;
 
@@ -88,7 +88,7 @@ public class priorityNP {
         System.out.println("Average turn around time: " + (float)total_tat / (float)n);
 
     }
-     public static void main(String[] args) {
+     void userIn() {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter number of processes [2-9]: ");

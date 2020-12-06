@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class roundRobin {
 
-    static void waitingTime(String pid[], int n, int at[], int bt[], int wt[], int qt, int ct[]) {
+    void waitingTime(String pid[], int n, int at[], int bt[], int wt[], int qt, int ct[]) {
         
         int rem_bt[] = new int[n];
 
@@ -35,14 +35,14 @@ public class roundRobin {
         }        
     }
 
-    static void turnaroundTime(String pid[], int n, int at[], int bt[], int tat[], int wt[], int ct[]) {
+    void turnaroundTime(String pid[], int n, int at[], int bt[], int tat[], int wt[], int ct[]) {
         for (int i = 0; i < n; i++) {
             tat[i] = ct[i] - at[i];
             wt[i] = tat[i] - bt[i];
         }
     }
     
-    static void avgTime(String pid[], int n, int at[], int bt[], int qt) {
+    void avgTime(String pid[], int n, int at[], int bt[], int qt) {
 
         int wt[] = new int[n], tat[] = new int[n], ct[] = new int[n], total_wt = 0, total_tat = 0;
 
@@ -63,16 +63,14 @@ public class roundRobin {
 
     }
 
-    public static void main(String[] args) throws Exception {
-
+    void userIn() {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter number of processes [2-9]: ");
         int userIn = sc.nextInt();
 
         String pid[] = new String[userIn];
-        int at[] = new int[userIn], bt[] = new int[userIn];
-        int n = pid.length;
+        int at[] = new int[userIn], bt[] = new int[userIn], n = pid.length;
 
         System.out.println("Arrival Time");
         for (int i = 0; i < n; i++) {
@@ -92,6 +90,5 @@ public class roundRobin {
         avgTime(pid, n, at, bt, qt);
         
         sc.close();
-
-    }   
+    }
 }
