@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class priorityNP {
 
     void sortProcesses(String pid[], int n, int at[], int bt[], int prt[]) {
-
         int temp;
         String stemp;
 
@@ -88,7 +87,8 @@ public class priorityNP {
         System.out.println("Average turn around time: " + (float)total_tat / (float)n);
 
     }
-     void userIn() {
+
+    void userIn() {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter number of processes [2-9]: ");
