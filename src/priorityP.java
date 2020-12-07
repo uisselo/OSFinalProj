@@ -9,24 +9,23 @@ public class priorityP {
 		Scanner a = new Scanner(System.in);
 
 		int n;
-		double att;
-		double awt;
-		double art;
-		double cpu_utilisation;
-		int total_turnaround_time = 0;
-		int total_waiting_time = 0;
-		int total_response_time = 0;
+		int TotalTurnaroundTime = 0;
+		int TotalWaitingTime = 0;
+		int TotalResponseTime = 0;
 		int total_idle_time = 0;
+		double avgTT;
+		double avgWT;
+		double avgRT;
 		double throughput;
 		int burst_remaining[] = new int [100];
 		int is_completed[] = new int [100];
 		Arrays.fill(is_completed, 0);
-		process p[] = new process[100];
+		Model p[] = new Model[100];
 		System.out.print("Enter number of processes [2-9]: ");
 		n = a.nextInt();
 		
 		for (int i = 0; i < n; i++){
-			p[i] = new process();
+			p[i] = new Model();
 		}
 		for (int i = 0; i < n; i++){
 			p[i].pid = i+1;
@@ -43,16 +42,14 @@ public class priorityP {
 			burst_remaining[i] = p[i].bt;
 			System.out.println();	
 		}
-		
-		int current_time = 0;
 		int completed = 0;
 		int prev = 0;
-		
+		int currentTime = 0;
 		while (completed != n) {
 			int idx = -1;
 			int mx = -1;
 			for (int i = 0; i < n; i++) {
-				if ((p[i].at <= current_time) && (is_completed[i] == 0)) {
+				if ((p[i].at <= currentTime) && (is_completed[i] == 0)) {
 					if (p[i].priority > mx) {
 						mx = p[i].priority;
 						idx = i;
@@ -68,30 +65,30 @@ public class priorityP {
 			
 			if (idx != -1) {
 				if (burst_remaining[idx] == p[idx].bt) {
-					p[idx].st = current_time;
+					p[idx].st = currentTime;
 					total_idle_time += p[idx].st - prev;
 				}
 				
 				burst_remaining[idx] -= 1;
-				current_time++;
-				prev = current_time;
+				currentTime++;
+				prev = currentTime;
 				
 				if (burst_remaining[idx] == 0) {
-					p[idx].ct = current_time;
+					p[idx].ct = currentTime;
 					p[idx].tt = (p[idx].ct - p[idx].at);
 					p[idx].wt = (p[idx].tt - p[idx].bt);
 					p[idx].rt = (p[idx].st - p[idx].at);
 					
-					total_turnaround_time += p[idx].tt;
-					total_waiting_time += p[idx].wt;
-					total_response_time += p[idx].rt;
+					TotalTurnaroundTime += p[idx].tt;
+					TotalWaitingTime += p[idx].wt;
+					TotalResponseTime += p[idx].rt;
 					
 					is_completed[idx] = 1;
 					completed++;
 				}
 			}
 			else {
-				current_time++;
+				currentTime++;
 			}
 		}
 
@@ -103,9 +100,9 @@ public class priorityP {
 			max_completion_time = Math.max(max_completion_time, p[i].ct);
 		}
 
-		att =(double) total_turnaround_time/n;
-		awt = (double) total_waiting_time/n;
-		art = (double) total_response_time/n;
+		avgTT =(double) TotalTurnaroundTime/n;
+		avgWT = (double) TotalWaitingTime/n;
+		avgRT; = (double) TotalResponseTime/n;
 		cpu_utilisation = ((max_completion_time - total_idle_time) / (double)max_completion_time) *100.00;
 		throughput = (double) n / (max_completion_time - min_arrival_time);
 		
@@ -116,16 +113,16 @@ public class priorityP {
 			System.out.println(p[i].pid+"\t"+p[i].at+"\t"+p[i].bt+"\t"+p[i].priority+"\t"+"\t" +p[i].tt+"\t"+p[i].wt+"\t"+p[i].rt);
 		}
 
-		System.out.println("Average turn around time: "+ att);
-		System.out.println("Average waiting time: "+ awt);
-		System.out.println("Average response time: "+ art);
+		System.out.println("Average turn around time: "+ avgTT);
+		System.out.println("Average waiting time: "+ avgWT);
+		System.out.println("Average response time: "+ avgRT;);
 
 		a.close();
 		
 	}
 }
 
-class process {
+class Model {
 	int pid = 0;
 	int at = 0;
 	int bt = 0;
