@@ -10,8 +10,14 @@ public class firstComeFirstServeNP {
 
         Scanner console= new Scanner (System.in);
 
-        System.out.println("Enter No. of Process: ");
+        System.out.println("Enter No. of Process [2-9]: ");
         int n = console.nextInt();
+
+        while (n < 2 || n > 9) {
+            System.out.println("Invalid input. Try again.");
+            main(null);
+        }       
+        
         int pid[] = new int[n];   // process ids
         int ar[] = new int[n];    // arrival times
         int bt[] = new int[n];    // burst or execution times

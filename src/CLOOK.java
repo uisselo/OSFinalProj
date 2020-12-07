@@ -95,8 +95,13 @@ public class CLOOK {
         System.out.println("[7] Disk Scheduling / CLOOK");
         Scanner in = new Scanner(System.in);
         // Number of requests
-        System.out.println("Input number of requests(5-10): ");
+        System.out.println("Input number of requests (5-10): ");
         int length = in.nextInt();
+
+        while (length < 5 || length > 10) {
+            System.out.println("Invalid input. Try again.");
+            main(null);
+        }
         
         // Request array 
         System.out.println("Input the requests");        
@@ -113,7 +118,8 @@ public class CLOOK {
         System.out.println("Initial position of head: " + head); 
 
         //Call method
-        algorithm(length, arr, head); 
+        algorithm(length, arr, head);             
+            
 
         in.close();
     }

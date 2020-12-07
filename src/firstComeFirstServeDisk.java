@@ -14,13 +14,18 @@ public class firstComeFirstServeDisk {
 		int total = 0; 
 		int distance, cur_track; 		
 		float avg = 0;
-			
-		System.out.println("Enter Head:");
-		head  = console.nextInt();	
 
-		System.out.println("Enter number of Requests:");
+		System.out.println("Enter number of Requests [5-10]:");
 		numreqs = console.nextInt(); 
 		int reqs[] = new int[numreqs];
+
+		while (numreqs < 5 || numreqs > 10) {
+            System.out.println("Invalid input. Try again.");
+            main(null);
+        }
+
+		System.out.println("Enter Head:");
+		head  = console.nextInt();
 
 		System.out.println("Enter Requests:");
 		for (int i=0;i<numreqs;i++) {
@@ -43,6 +48,7 @@ public class firstComeFirstServeDisk {
 
 		System.out.println("Total head movement: " + total); 
 		System.out.println("Average seek time: " +  avg); 
+	
 
 		console.close();
 	}	

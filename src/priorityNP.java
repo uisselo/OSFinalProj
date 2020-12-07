@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class priorityNP {
 
-    void sortProcesses(String pid[], int n, int at[], int bt[], int prt[]) {
+    static void sortProcesses(String pid[], int n, int at[], int bt[], int prt[]) {
         int temp;
         String stemp;
 
@@ -58,7 +58,7 @@ public class priorityNP {
         }
     }
 
-    void algorithm(String pid[], int n, int at[], int bt[], int prt[]) {
+    static void algorithm(String pid[], int n, int at[], int bt[], int prt[]) {
 
         int ct[] = new int[n], tat[] = new int[n], wt[] = new int[n], total_wt = 0, total_tat = 0;
 
@@ -88,7 +88,11 @@ public class priorityNP {
 
     }
 
-    void userIn() {
+    void callMain() {
+        main(null);
+    }
+
+    public static void main(String[] args) {
         System.out.println("");
         System.out.println("[5] CPU Scheduling / Non Preemptive Priority");
 
@@ -96,6 +100,11 @@ public class priorityNP {
 
         System.out.print("Enter number of processes [2-9]: ");
         int userIn = sc.nextInt();
+
+        while (userIn < 2 || userIn > 9) {
+            System.out.println("Invalid input. Try again.");
+            main(null);
+        }
 
         String pid[] = new String[userIn];
         int at[] = new int[userIn], bt[] = new int[userIn], prt[] = new int[userIn];
@@ -119,7 +128,7 @@ public class priorityNP {
             prt[i] = sc.nextInt();
         }     
 
-        algorithm(pid, n, at, bt, prt);    
+        algorithm(pid, n, at, bt, prt); 
 
         sc.close();
     }

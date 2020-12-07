@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class roundRobin {
 
-    void waitingTime(String pid[], int n, int at[], int bt[], int wt[], int qt, int ct[]) {
+    static void waitingTime(String pid[], int n, int at[], int bt[], int wt[], int qt, int ct[]) {
         
         int rem_bt[] = new int[n];
 
@@ -35,14 +35,14 @@ public class roundRobin {
         }        
     }
 
-    void turnaroundTime(String pid[], int n, int at[], int bt[], int tat[], int wt[], int ct[]) {
+    static void turnaroundTime(String pid[], int n, int at[], int bt[], int tat[], int wt[], int ct[]) {
         for (int i = 0; i < n; i++) {
             tat[i] = ct[i] - at[i];
             wt[i] = tat[i] - bt[i];
         }
     }
     
-    void avgTime(String pid[], int n, int at[], int bt[], int qt) {
+    static void avgTime(String pid[], int n, int at[], int bt[], int qt) {
 
         int wt[] = new int[n], tat[] = new int[n], ct[] = new int[n], total_wt = 0, total_tat = 0;
 
@@ -63,7 +63,11 @@ public class roundRobin {
 
     }
 
-    void userIn() {
+    void callMain() {
+        main(null);
+    }
+
+    public static void main(String[] args) {
         System.out.println("");
         System.out.println("[2] CPU Scheduling / Preemptive Round Robin");
 
@@ -71,6 +75,11 @@ public class roundRobin {
 
         System.out.print("Enter number of processes [2-9]: ");
         int userIn = sc.nextInt();
+
+        while (userIn < 2 || userIn > 9) {
+            System.out.println("Invalid input. Try again.");
+            main(null);
+        }
 
         String pid[] = new String[userIn];
         int at[] = new int[userIn], bt[] = new int[userIn], n = pid.length;
@@ -91,7 +100,7 @@ public class roundRobin {
         int qt = sc.nextInt();
 
         avgTime(pid, n, at, bt, qt);
-        
+
         sc.close();
     }
 }

@@ -11,6 +11,12 @@ public class shortestJobFirst {
         Scanner sc = new Scanner(System.in);
         System.out.println ("Enter number of processes [2-9]");
         int n = sc.nextInt();
+
+        while (n < 2 || n > 9) {
+            System.out.println("Invalid input. Try again.");
+            main(null);
+        }
+
         int pid[] = new int[n];
         int at[] = new int[n];  // arrival time
         int bt[] = new int[n];  // burst time
@@ -18,11 +24,10 @@ public class shortestJobFirst {
         int ta[] = new int[n];  // turn around time
         int wt[] = new int[n];  // waiting time
         int f[] = new int[n];   // flag, it checks process is completed or not
-        int st=0, tot=0;
-        float avgwt=0, avgta=0;
+        int st = 0, tot = 0;
+        float avgwt = 0 , avgta = 0;
     
-        for(int i=0;i<n;i++)
-        {
+        for (int i=0;i<n;i++) {
             System.out.println ("Enter process " + (i+1) + " arrival time:");
             at[i] = sc.nextInt();
 
@@ -34,9 +39,8 @@ public class shortestJobFirst {
         
         boolean a = true;
         while (a) {
-            int c=n, min = 999;
-            if (tot == n) // total no of process = completed process loop will be terminated
-                break;
+            int c = n, min = 999;
+            if (tot == n) break; // total no of process = completed process loop will be terminated            
             
             for (int i=0; i<n; i++) {
                 /*
@@ -62,9 +66,9 @@ public class shortestJobFirst {
         }
         
         System.out.println("\npid  arrival brust  complete turn waiting");
-        for(int i=0;i<n;i++) {
-            avgwt+= wt[i];
-            avgta+= ta[i];
+        for(int i = 0; i < n; i++) {
+            avgwt += wt[i];
+            avgta += ta[i];
             System.out.println(pid[i]+"\t"+at[i]+"\t"+bt[i]+"\t"+ct[i]+"\t"+ta[i]+"\t"+wt[i]);
         }
         System.out.println ("\nAverage Turn Around Time is "+ (float)(avgta/n));

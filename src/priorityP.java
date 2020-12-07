@@ -27,6 +27,11 @@ public class priorityP {
 		Model p[] = new Model[100];
 		System.out.print("Enter number of processes [2-9]: ");
 		n = a.nextInt();
+
+		while (n < 2 || n > 9) {
+            System.out.println("Invalid input. Try again.");
+            main(null);
+        }
 		
 		for (int i = 0; i < n; i++){
 			p[i] = new Model();

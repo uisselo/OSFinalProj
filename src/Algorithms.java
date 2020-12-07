@@ -4,6 +4,7 @@ public class Algorithms extends priorityNP {
     // preemptive cpu sched
     static priorityP pp = new priorityP();
     static roundRobin rr = new roundRobin();
+    static shortestRemainingTimeFirst srtf = new shortestRemainingTimeFirst();
 
     // nonpreemptive cpu sched
     static firstComeFirstServeNP fcfsNP = new firstComeFirstServeNP();
@@ -13,6 +14,7 @@ public class Algorithms extends priorityNP {
     // disk sched
     static CLOOK clook = new CLOOK();
     static firstComeFirstServeDisk fcfsDisk = new firstComeFirstServeDisk();
+    static SSTF sstf = new SSTF();
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -22,7 +24,7 @@ public class Algorithms extends priorityNP {
         System.out.println("Preemptive");
         System.out.println("[1] Priority");
         System.out.println("[2] Round Robin");
-        System.out.println("[3] Shortest Remaining Time");
+        System.out.println("[3] Shortest Remaining Time First");
         System.out.println("Non Peemptive");
         System.out.println("[4] First Come First Serve");
         System.out.println("[5] Priority");
@@ -35,15 +37,18 @@ public class Algorithms extends priorityNP {
         int userSelected = sc.nextInt();
 
         if (userSelected == 1) pp.callMain();
-        else if (userSelected == 2) rr.userIn();
-        else if (userSelected == 3) System.out.println("wala pa"); 
+        else if (userSelected == 2) rr.callMain();
+        else if (userSelected == 3) srtf.callMain();
         else if (userSelected == 4) fcfsNP.callMain();
-        else if (userSelected == 5) npp.userIn();
+        else if (userSelected == 5) npp.callMain();
         else if (userSelected == 6) sjf.callMain();
         else if (userSelected == 7) clook.callMain();
         else if (userSelected == 8) fcfsDisk.callMain();
-        else if (userSelected == 9) System.out.println("wala pa");
-        else System.out.println("Invalid input.");
+        else if (userSelected == 9) sstf.callMain();
+        else {
+            System.out.println("Invalid input. Try again.");
+            main(null);
+        }
 
         sc.close();
     }
