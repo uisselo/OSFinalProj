@@ -64,6 +64,9 @@ public class roundRobin {
     }
 
     void userIn() {
+        System.out.println("");
+        System.out.println("[2] CPU Scheduling / Preemptive Round Robin");
+
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter number of processes [2-9]: ");

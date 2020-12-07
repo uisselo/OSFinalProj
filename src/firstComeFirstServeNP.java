@@ -5,6 +5,9 @@ public class firstComeFirstServeNP {
         main(null);
     }
     public static void main(String[] args) {
+        System.out.println("");
+        System.out.println("[4] CPU Scheduling / Non Preemptive FCFS");
+
         Scanner console= new Scanner (System.in);
 
         System.out.println("Enter No. of Process: ");

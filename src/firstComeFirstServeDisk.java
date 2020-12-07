@@ -5,6 +5,9 @@ public class firstComeFirstServeDisk {
 		main(null);
 	}
 	public static void main(String[] args) {
+		System.out.println("");
+        System.out.println("[8] Disk Scheduling / FCFS");
+
 		Scanner console = new Scanner (System.in);
 		
 		int head, numreqs;

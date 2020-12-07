@@ -11,6 +11,7 @@ public class Algorithms extends priorityNP {
     static shortestJobFirst sjf = new shortestJobFirst();
 
     // disk sched
+    static CLOOK clook = new CLOOK();
     static firstComeFirstServeDisk fcfsDisk = new firstComeFirstServeDisk();
 
     public static void main(String[] args) {
@@ -27,8 +28,8 @@ public class Algorithms extends priorityNP {
         System.out.println("[5] Priority");
         System.out.println("[6] Shortest Job First");
         System.out.println("Disk Scheduling");
-        System.out.println("[7] FCFS");
-        System.out.println("[8] SCAN");
+        System.out.println("[7] CLOOK");
+        System.out.println("[8] FCFS");
         System.out.println("[9] SSTF");
 
         int userSelected = sc.nextInt();
@@ -39,8 +40,8 @@ public class Algorithms extends priorityNP {
         else if (userSelected == 4) fcfsNP.callMain();
         else if (userSelected == 5) npp.userIn();
         else if (userSelected == 6) sjf.callMain();
-        else if (userSelected == 7) fcfsDisk.callMain();
-        else if (userSelected == 8) System.out.println("wala pa");
+        else if (userSelected == 7) clook.callMain();
+        else if (userSelected == 8) fcfsDisk.callMain();
         else if (userSelected == 9) System.out.println("wala pa");
         else System.out.println("Invalid input.");
 

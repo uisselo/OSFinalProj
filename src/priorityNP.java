@@ -89,6 +89,9 @@ public class priorityNP {
     }
 
     void userIn() {
+        System.out.println("");
+        System.out.println("[5] CPU Scheduling / Non Preemptive Priority");
+
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter number of processes [2-9]: ");

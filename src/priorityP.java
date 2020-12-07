@@ -5,7 +5,10 @@ public class priorityP {
 	void callMain() {
 		main(null);
 	}
-	public static void main(String[] args) {		
+	public static void main(String[] args) {	
+		System.out.println("");
+		System.out.println("[1] CPU Scheduling / Preemptive Priority");
+			
 		Scanner a = new Scanner(System.in);
 
 		int n;
@@ -16,6 +19,7 @@ public class priorityP {
 		double avgTT;
 		double avgWT;
 		double avgRT;
+		double cpu_utilisation;
 		double throughput;
 		int burst_remaining[] = new int [100];
 		int is_completed[] = new int [100];
@@ -102,7 +106,7 @@ public class priorityP {
 
 		avgTT =(double) TotalTurnaroundTime/n;
 		avgWT = (double) TotalWaitingTime/n;
-		avgRT; = (double) TotalResponseTime/n;
+		avgRT = (double) TotalResponseTime/n;
 		cpu_utilisation = ((max_completion_time - total_idle_time) / (double)max_completion_time) *100.00;
 		throughput = (double) n / (max_completion_time - min_arrival_time);
 		
@@ -115,7 +119,7 @@ public class priorityP {
 
 		System.out.println("Average turn around time: "+ avgTT);
 		System.out.println("Average waiting time: "+ avgWT);
-		System.out.println("Average response time: "+ avgRT;);
+		System.out.println("Average response time: "+ avgRT);
 
 		a.close();
 		

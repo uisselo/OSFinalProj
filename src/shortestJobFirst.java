@@ -5,6 +5,9 @@ public class shortestJobFirst {
         main(null);
     }
     public static void main(String[] args) {
+        System.out.println("");
+        System.out.println("[6] CPU Scheduling / Non Preemptive SJF");
+
         Scanner sc = new Scanner(System.in);
         System.out.println ("Enter number of processes [2-9]");
         int n = sc.nextInt();
