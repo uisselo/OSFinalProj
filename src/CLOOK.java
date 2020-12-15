@@ -1,6 +1,9 @@
 import java.util.*;
 
 public class CLOOK {
+
+    static Algorithms mainClass = new Algorithms();
+
     void callMain() {
         main(null);
     }
@@ -88,6 +91,43 @@ public class CLOOK {
 
         head_movement = sum_seek;
         System.out.println("Total head movement = " + head_movement);
+
+        tryAgain();
+    }
+
+    static void tryAgain() {
+        System.out.println("");
+        System.out.print("Do you want to try again? [Y/N]: ");
+        Scanner in = new Scanner(System.in);
+        char yn = in.next().charAt(0);
+
+        while (yn != 'Y' && yn != 'N') {
+            System.out.print("Enter valid input. [Y/N]: ");
+            yn = in.next().charAt(0);
+        }
+
+        if (yn == 'Y') {
+            System.out.println("");
+            System.out.println("[A] Try Disk CLOOK again");
+            System.out.println("[B] Try another algorithm");
+            System.out.print("Enter your choice: ");
+            char userIn = in.next().charAt(0);
+            
+            while (userIn != 'A' && userIn != 'B') {
+                System.out.print("Enter valid input. [A/B]: ");
+                userIn = in.next().charAt(0);
+            }
+
+            if (userIn == 'A') main(null);
+            else if (userIn == 'B') mainClass.callMain();
+        }
+        else if (yn == 'N') {
+            System.out.println("");
+            System.out.println("Thank you!");
+            System.exit(0);
+        }
+
+        in.close();
     }
 
     public static void main(String[] args) {

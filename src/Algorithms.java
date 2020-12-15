@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Algorithms extends priorityNP {
+public class Algorithms {
     // preemptive cpu sched
     static priorityP pp = new priorityP();
     static roundRobin rr = new roundRobin();
@@ -16,10 +16,16 @@ public class Algorithms extends priorityNP {
     static firstComeFirstServeDisk fcfsDisk = new firstComeFirstServeDisk();
     static SSTF sstf = new SSTF();
 
+    void callMain() {
+        main(null);
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Select an algorithm. [1-9]");
+        System.out.println("");
+        System.out.println("Select an algorithm.");
+        System.out.println("");
         System.out.println("CPU Scheduling");
         System.out.println("Preemptive");
         System.out.println("[1] Priority");
@@ -29,12 +35,19 @@ public class Algorithms extends priorityNP {
         System.out.println("[4] First Come First Serve");
         System.out.println("[5] Priority");
         System.out.println("[6] Shortest Job First");
+        System.out.println("");
         System.out.println("Disk Scheduling");
         System.out.println("[7] CLOOK");
         System.out.println("[8] FCFS");
         System.out.println("[9] SSTF");
-
+        System.out.println("");
+        System.out.print("Enter chosen algorithm [1-9]: ");
         int userSelected = sc.nextInt();
+
+        while (userSelected < 1 || userSelected > 9) {
+            System.out.println("Invalid input. Try again.");
+            main(null);
+        }
 
         if (userSelected == 1) pp.callMain();
         else if (userSelected == 2) rr.callMain();
@@ -45,10 +58,6 @@ public class Algorithms extends priorityNP {
         else if (userSelected == 7) clook.callMain();
         else if (userSelected == 8) fcfsDisk.callMain();
         else if (userSelected == 9) sstf.callMain();
-        else {
-            System.out.println("Invalid input. Try again.");
-            main(null);
-        }
 
         sc.close();
     }
